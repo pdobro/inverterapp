@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Inverter</string>
+    <string name="moc">Moc</string>
+    <string name="moc_dzi">Moc dziś</string>
+    <string name="ostatnia_aktualizacja">Ostatnia aktualizacja</string>
+    <string name="produkcja_dzi">Produkcja dziś</string>
+</resources>
