@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/star"
+        android:icon="@drawable/ic_star"
+        android:title="@string/rekordy"
+        />
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"
+        />
+
+    <item
+        android:id="@+id/date"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/dzie"
+        />
+</menu>
