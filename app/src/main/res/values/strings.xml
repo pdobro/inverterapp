@@ -9,4 +9,6 @@
     <string name="dzie">Dzień</string>
     <string name="rekordy">Rekordy</string>
     <string name="home">Home</string>
+    <string name="najwieksza_produkcja">Największa produkcja:</string>
+    <string name="najwe_ksza_moc">Największa moc:</string>
 </resources>

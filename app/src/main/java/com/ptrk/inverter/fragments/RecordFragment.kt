@@ -11,18 +11,12 @@ import com.ptrk.inverter.R
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_record.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RecordFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class RecordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -47,15 +41,7 @@ class RecordFragment : Fragment() {
         getRecord()
     }
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RecordFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             RecordFragment().apply {
@@ -84,9 +70,9 @@ class RecordFragment : Fragment() {
 
         val queryEnergy = docRef.orderBy("todayEnergy", Query.Direction.DESCENDING).limit(1).whereLessThan("todayEnergy", "2.0")
         queryEnergy.get().addOnSuccessListener { snapshots ->
-            val gratestEnergy = snapshots.documents[0]
-            val a = gratestEnergy.getString("todayEnergy")
-            val b = gratestEnergy.getString("datetime")
+            val greatestEnergy = snapshots.documents[0]
+            val a = greatestEnergy.getString("todayEnergy")
+            val b = greatestEnergy.getString("datetime")
             prodRecord.text = a + " kWh"
             if (b != null) {
                 prodRecordDate.text =  b.take(10)
