@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">Inverter</string>
     <string name="moc">Moc</string>
-    <string name="moc_dzi">Moc dziś</string>
     <string name="ostatnia_aktualizacja">Ostatnia aktualizacja</string>
     <string name="produkcja_dzi">Produkcja dziś</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dzie">Dzień</string>
     <string name="rekordy">Rekordy</string>
     <string name="home">Home</string>
     <string name="najwieksza_produkcja">Największa produkcja:</string>
     <string name="najwe_ksza_moc">Największa moc:</string>
+    <string name="wybierz_date">Wybierz datę</string>
 </resources>

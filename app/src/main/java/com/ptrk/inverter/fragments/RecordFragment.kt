@@ -1,14 +1,13 @@
 package com.ptrk.inverter.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.ptrk.inverter.R
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_record.*
 
 
@@ -42,14 +41,6 @@ class RecordFragment : Fragment() {
     }
     companion object {
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RecordFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 
     private fun getRecord() {
@@ -62,7 +53,7 @@ class RecordFragment : Fragment() {
             val greatestPower = snapshots.documents[0]
             val b = greatestPower.getString("power")
             val c = greatestPower.getString("datetime")
-            powerRecord.text = b + " W"
+            powerRecord.text = "$b W"
             if (c != null) {
                 powerRecordDate.text =  c.take(10)
             }
@@ -73,7 +64,7 @@ class RecordFragment : Fragment() {
             val greatestEnergy = snapshots.documents[0]
             val a = greatestEnergy.getString("todayEnergy")
             val b = greatestEnergy.getString("datetime")
-            prodRecord.text = a + " kWh"
+            prodRecord.text = "$a kWh"
             if (b != null) {
                 prodRecordDate.text =  b.take(10)
             }
