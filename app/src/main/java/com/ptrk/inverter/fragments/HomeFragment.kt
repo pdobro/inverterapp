@@ -1,5 +1,6 @@
 package com.ptrk.inverter.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,7 @@ class HomeFragment : Fragment() {
     companion object {
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getData() {
         val db = FirebaseFirestore.getInstance()
         val docRef = db.collection("data")
@@ -52,9 +54,11 @@ class HomeFragment : Fragment() {
         val query = docRef.orderBy("datetime", Query.Direction.DESCENDING).limit(1)
         query.get().addOnSuccessListener { snapshots ->
             val first = snapshots.documents[0]
-            powerText.text = first.getString("power") + "W"
-            energyText.text = first.getString("todayEnergy") + "kWh"
-            dateText.text = first.getString("datetime")
+            if (snapshots.documents.size > 0) {
+                powerText.text = first.getString("power") + "W"
+                energyText.text = first.getString("todayEnergy") + "kWh"
+                dateText.text = first.getString("datetime")
+            }
         }
 
     }

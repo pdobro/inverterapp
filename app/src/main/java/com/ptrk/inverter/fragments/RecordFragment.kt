@@ -1,5 +1,6 @@
 package com.ptrk.inverter.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +44,7 @@ class RecordFragment : Fragment() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getRecord() {
         val db = FirebaseFirestore.getInstance()
         val docRef = db.collection("data")
@@ -51,23 +53,29 @@ class RecordFragment : Fragment() {
         val queryPower = docRef.orderBy("power", Query.Direction.DESCENDING).limit(1).whereLessThan("power", "250")
         queryPower.get().addOnSuccessListener { snapshots ->
             val greatestPower = snapshots.documents[0]
-            val b = greatestPower.getString("power")
-            val c = greatestPower.getString("datetime")
-            powerRecord.text = "$b W"
-            if (c != null) {
-                powerRecordDate.text =  c.take(10)
+            if (snapshots.documents.size > 0) {
+                val b = greatestPower.getString("power")
+                val c = greatestPower.getString("datetime")
+                powerRecord.text = "$b W"
+                if (c != null) {
+                    powerRecordDate.text = c.take(10)
+                }
             }
         }
 
         val queryEnergy = docRef.orderBy("todayEnergy", Query.Direction.DESCENDING).limit(1).whereLessThan("todayEnergy", "2.0")
         queryEnergy.get().addOnSuccessListener { snapshots ->
+
             val greatestEnergy = snapshots.documents[0]
-            val a = greatestEnergy.getString("todayEnergy")
-            val b = greatestEnergy.getString("datetime")
-            prodRecord.text = "$a kWh"
-            if (b != null) {
-                prodRecordDate.text =  b.take(10)
+            if (snapshots.documents.size > 0) {
+                val a = greatestEnergy.getString("todayEnergy")
+                val b = greatestEnergy.getString("datetime")
+                prodRecord.text = "$a kWh"
+                if (b != null) {
+                    prodRecordDate.text = b.take(10)
+                }
             }
+
         }
 
     }
